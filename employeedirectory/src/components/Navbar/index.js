@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/">
-        Pupster
+        Directory
       </Link>
       <div>
         <ul className="navbar-nav">
@@ -15,20 +15,20 @@ function Navbar() {
             <Link
               to="/"
               className={
-                window.location.pathname === "/" || window.location.pathname === "/about"
+                window.location.pathname === "/" || window.location.pathname === "/home"
                   ? "nav-link active"
                   : "nav-link"
               }
             >
-              About
+              Home
             </Link>
           </li>
           <li className="nav-item">
             <Link
               to="/discover"
-              className={window.location.pathname === "/discover" ? "nav-link active" : "nav-link"}
+              className={window.location.pathname === "/employees" ? "nav-link active" : "nav-link"}
             >
-              Discover
+              Employees
             </Link>
           </li>
           <li className="nav-item">
