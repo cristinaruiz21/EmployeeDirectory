@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Wrapper from "../components/Wrapper";
 import Title from "../components/Title";
-import employees from "../employees.json";
+// import employees from "../employees.json";
 
 
 class Employee extends Component{
