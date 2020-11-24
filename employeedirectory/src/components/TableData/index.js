@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import Nav from "../Navbar";
 import Search from "../SearchForm";
+import Table from "../Table";
 
 export default class TableData extends Component{
     state = {
@@ -14,7 +15,7 @@ export default class TableData extends Component{
         {name:"name",width:"10%"},
         {name:"phone",width:"20%"},
         {name:"email",width:"20%"},
-        {name:"DOB",width:"10%"},
+        {name:"DOB",width:"10%"}
     ]
 
     sort = heading =>{
@@ -60,6 +61,7 @@ export default class TableData extends Component{
         const searchValue = event.target.value;
         const filteredEmp = this.state.employees.filter(emp => {
             let values = Object.values(emp).join("").toLowerCase()
+            console.log(values)
             return values.indexOf(searchValue.toLowerCase()) !== -1
         })
         this.setState({filteredEmployees:filteredEmp})
@@ -80,6 +82,7 @@ export default class TableData extends Component{
             <Search
             handleSearch={this.handleSearch}
             />
+            <Table headings={this.headings} employees={this.state.employees} sort={this.sort}/>
             </div>
         )
     }

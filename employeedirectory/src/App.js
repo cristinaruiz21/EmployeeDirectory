@@ -14,7 +14,7 @@ function App() {
       <div>
         <Wrapper>
           <Route exact path="/" component={Home} />
-          <Route exact path="/employees" component={Employees} />
+          {/* <Route exact path="/employees" component={Employees} /> */}
         </Wrapper>
         <TableData/>
         <Footer />
