@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import Nav from "../Navbar";
 import Search from "../SearchForm";
 import Table from "../Table";
 
@@ -78,7 +77,6 @@ export default class TableData extends Component{
     render(){
         return (
             <div>
-            <Nav/>
             <Search
             handleSearch={this.handleSearch}
             />
