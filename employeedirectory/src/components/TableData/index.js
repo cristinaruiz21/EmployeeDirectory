@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import Search from "../SearchForm";
 import Table from "../Table";
 
-export default class TableData extends Component{
+class TableData extends Component{
     state = {
         employees: [{}],
         filteredEmployees: [{}],
@@ -56,15 +56,6 @@ export default class TableData extends Component{
         })
     }
 
-    handleSearch = event =>{
-        const searchValue = event.target.value;
-        const filteredEmp = this.state.employees.filter(emp => {
-            let values = Object.values(emp).join("").toLowerCase()
-            console.log(values)
-            return values.indexOf(searchValue.toLowerCase()) !== -1
-        })
-        this.setState({filteredEmployees:filteredEmp})
-    }
     componentDidMount(){
         API.getEmp().then(res=>{
             this.setState({
@@ -74,14 +65,26 @@ export default class TableData extends Component{
         })
     }
 
+    handleSearch = event =>{
+        event.preventDefault()
+        const searchValue = event.target.value;
+        const filteredEmp = this.state.employees.filter(emp => {
+            let values = Object.values(emp).join("").toLowerCase()
+            return values.indexOf(searchValue.toLowerCase()) !== -1
+        })
+        this.setState({filteredEmployees:filteredEmp})
+    };
+
     render(){
         return (
             <div>
-            <Search
-            handleSearch={this.handleSearch}
-            />
-            <Table headings={this.headings} employees={this.state.employees} sort={this.sort}/>
+                <Search
+                    handleSearch={this.handleSearch}
+                />
+                <Table headings={this.headings} employees={this.state.filteredEmployees} sort={this.sort}/>
             </div>
         )
     }
 }
+
+export default TableData;
